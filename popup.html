@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Prompt Manager</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="background-glow" aria-hidden="true"></div>
+    <main class="app" aria-label="AI Prompt Manager">
+      <header class="app-header">
+        <h1>AI Prompt Manager</h1>
+        <p>Private, local, and fast.</p>
+      </header>
+
+      <nav class="tabs card" role="tablist" aria-label="Prompt views">
+        <button
+          id="tab-create"
+          class="tab-btn is-active"
+          type="button"
+          role="tab"
+          aria-controls="create-panel"
+          aria-selected="true"
+        >
+          Create
+        </button>
+        <button
+          id="tab-list"
+          class="tab-btn"
+          type="button"
+          role="tab"
+          aria-controls="list-panel"
+          aria-selected="false"
+        >
+          List
+        </button>
+      </nav>
+
+      <section
+        id="create-panel"
+        class="panel is-active"
+        role="tabpanel"
+        aria-labelledby="tab-create"
+      >
+        <div class="composer card" aria-label="Create prompt">
+          <label class="sr-only" for="prompt-input">Prompt</label>
+          <textarea
+            id="prompt-input"
+            rows="4"
+            maxlength="4000"
+            placeholder="Paste or type your prompt..."
+          ></textarea>
+          <div class="composer-footer">
+            <span id="char-counter" aria-live="polite">0 / 4000</span>
+            <button id="save-btn" class="btn btn-primary" type="button">Save Prompt</button>
+          </div>
+        </div>
+        <p id="create-status" class="status-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section
+        id="list-panel"
+        class="panel"
+        role="tabpanel"
+        aria-labelledby="tab-list"
+        hidden
+      >
+        <div id="library-root" class="library card" aria-label="Saved prompts">
+          <div class="library-head">
+            <div class="library-title-row">
+              <h2>Saved Prompts</h2>
+              <p id="prompt-count" class="count-pill" aria-live="polite">0 prompts</p>
+            </div>
+            <label class="sr-only" for="search-input">Search prompts</label>
+            <input id="search-input" type="search" placeholder="Search prompts..." />
+          </div>
+          <p id="library-meta" class="library-meta" aria-live="polite">
+            No prompts yet. Save your first one in Create.
+          </p>
+          <p id="list-status" class="status-message" role="status" aria-live="polite"></p>
+          <ul id="prompt-list" class="prompt-list" aria-label="Prompt list"></ul>
+        </div>
+      </section>
+    </main>
+
+    <template id="prompt-item-template">
+      <li class="prompt-item">
+        <article class="prompt-content">
+          <p class="prompt-text"></p>
+          <time class="prompt-time"></time>
+        </article>
+        <div class="prompt-actions">
+          <button class="btn btn-copy" type="button">Copy</button>
+          <button class="btn btn-danger" type="button">Delete</button>
+        </div>
+      </li>
+    </template>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

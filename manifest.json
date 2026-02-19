@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "AI Prompt Manager",
+  "description": "Save, search, copy, and manage reusable AI prompts locally.",
+  "version": "1.0.0",
+  "permissions": ["storage", "clipboardWrite"],
+  "action": {
+    "default_title": "AI Prompt Manager",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon-16.png",
+      "32": "icon-48.png",
+      "48": "icon-48.png",
+      "128": "icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icon-16.png",
+    "32": "icon-48.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "ai-prompt-manager@local",
+      "strict_min_version": "109.0"
+    }
+  }
+}
